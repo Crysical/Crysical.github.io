@@ -1,0 +1,33 @@
+```My data structure will be images in sequence of date of creation.
+I want to have the architecture of the code to be organized using pseudo code
+The interface will make use of images with color and will be an organized website
+The code will generate colors without using a library to have it already done.```
+
+
+
+#tab
+
+
+    #art blocks
+
+
+    #scrolling unless it's already done
+
+
+    #sort function
+
+
+    #name of tabs
+
+
+#define art blocks
+
+    #name
+
+    #date
+
+    #images
+
+    #display/select
+    
+#define select option
