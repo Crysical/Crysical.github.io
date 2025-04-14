@@ -17,15 +17,58 @@
         p{text-align:center;
         }
     </style>
+    
 
 </head>
 
 <body>
+<!-- buttons allowing to switch between tabs-->
+    <button onclick = "openTab('all art')">
+        Hello!
+    </button>
+    <button onclick = "openTab('digital art')">
+        Hii!
+    </button>
+    <button onclick = "openTab('traditional art')">
+        Hii!
+    </button>
+
+<!--introduction to website/headings-->
     <h1>
         HELLO INTERNET
     </h1>
     <p> Welcome to Hanna's art portfolio. </p>
-    <img src ="birdpicturetest.jpg" title = "Bird" width = "500">
+   
+
+<!--tabs-->
+    <div id = "all art" class = "tab">
+
+        <img src ="birdpicturetest.jpg" title = "Bird" width = "500">
     <img src ="prettyyyyhair.png" title="idk" width = "500">
+    </div>
+
+    <div id = "digital art" class = "tab">
+
+        haii
+    </div>
+
+    <div id = "traditional art" class = "tab">
+
+        ello
+    </div>
+
+<!--java script allowing to switch between tabs and hide others-->
+    <script>
+        function openTab(tab){
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(tab).style.display = 'block';
+
+        }
+    openTab("all art");
+    </script>
+
+
+
 </body>
 </html>
