@@ -1,0 +1,5 @@
+add all pixel colors of the image together
+
+divide by the amount of pixels
+
+sort the images in order of lowest to highest numbers
