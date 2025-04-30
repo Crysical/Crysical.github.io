@@ -76,6 +76,21 @@
         }
     openTab("all art");
 
+        
+        function nameSort(title){
+            const container = document.getElementById(title);
+            const pictures = Array.from(container.children);
+            items.sort((a, b) => {
+                const nameA = a.getAttribute("title").toLowercase();
+                const nameB = b.getAttribute("title").toLowercase();
+                return nameA.localeCompare(nameB);
+
+
+            });
+        items.forEach(item = container.appendChild(item))
+
+        }
+
         function colorSorter(color){
             const img = document.getElementById(color);
             const canvas = document.getElementById("canvas");
