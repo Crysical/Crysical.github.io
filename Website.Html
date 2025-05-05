@@ -29,10 +29,10 @@
     </canvas>
 
 
-    <select onchange="nameSort('all art')">
+    <select onchange= "eval(this.value)">
     
-        <option value="avg_color"> average color </option>
-        <option value="name"> name </option>
+        <option value= colorSorter()> average color </option>
+        <option value= nameSort()> name </option>
     
     </select>
 
@@ -92,14 +92,14 @@
         function nameSort(title){
             const container = document.getElementById(title);
             const pictures = Array.from(container.children);
-            items.sort((a, b) => {
-                const nameA = a.getAttribute("data-name").toLowercase();
-                const nameB = b.getAttribute("data-name").toLowercase();
+            pictures.sort((a, b) => {
+                const nameA = a.getAttribute("data-name").toLowerCase();
+                const nameB = b.getAttribute("data-name").toLowerCase();
                 return nameA.localeCompare(nameB);
 
 
             });
-        items.forEach(item = container.appendChild(item))
+        pictures.forEach(item => container.appendChild(item))
 
         }
 
@@ -108,7 +108,7 @@
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
 
-            img.onload = () => {
+
 
                 canvas.width = img.naturalWidth;
                 canvas.height = img.naturalHeight;
@@ -125,11 +125,17 @@
                     pixel_count += 1
                 }
                 
-                    red_total/pixel_count
-                    green_total/pixel_count
-                    blue_total/pixel_count
+                    red_total/=pixel_count
+                    green_total/=pixel_count
+                    blue_total/=pixel_count
+
+                    const red = red_total.toString();
+                    const green = green_total.toString();
+                    const blue = blue_total.toString();
+                    const stringhex = red + green + blue 
+                    return stringhex
             }
-        } 
+        
     </script>
 
 
