@@ -29,7 +29,7 @@
     </canvas>
 
 
-    <select onchange="nameSort()">
+    <select onchange="nameSort('all art')">
     
         <option value="avg_color"> average color </option>
         <option value="name"> name </option>
@@ -57,10 +57,15 @@
 
 <!--tabs-->
     <div id = "all art" class = "tab">
-
-        <img src ="guhguh.png" title = "Bird (added 4/16/2025)" width = "500">
-        <img src ="prettyyyyhair.png" title="Iridescent Hair (added 4/16/2025)" width = "500">
-        <img src ="jig.png" title = "Stickman Doodles (added 4/16/2025)" width = "500">
+        <div class="image-wrapper" data-name="Hair">
+            <img src ="prettyyyyhair.png" title="Iridescent Hair (added 4/16/2025)" width = "500">
+        </div>
+        <div class="image-wrapper" data-name="Bird">
+            <img src ="guhguh.png" title = "Bird (added 4/16/2025)" width = "500">
+        </div>
+        <div class="image-wrapper" data-name="Doodles">
+            <img src ="jig.png" title = "Stickman Doodles (added 4/16/2025)" width = "500">
+        </div>
     </div>
 
     <div id = "digital art" class = "tab">
@@ -88,8 +93,8 @@
             const container = document.getElementById(title);
             const pictures = Array.from(container.children);
             items.sort((a, b) => {
-                const nameA = a.getAttribute("title").toLowercase();
-                const nameB = b.getAttribute("title").toLowercase();
+                const nameA = a.getAttribute("data-name").toLowercase();
+                const nameB = b.getAttribute("data-name").toLowercase();
                 return nameA.localeCompare(nameB);
 
 
