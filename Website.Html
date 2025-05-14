@@ -16,8 +16,91 @@
 
         p{text-align:center;
         }
-    </style>
+        .image-wrapper {
+            justify-content:center;
+            display:flex;
+        }
+        #view{
 
+            display:none;
+            position:fixed;
+            z-index:9999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            justify-content:center;
+            align-items:center;
+
+
+        }
+        #view img{
+            max-height: fit-content;
+            max-width: fit-content;
+
+
+
+
+        }
+    </style>
+    <script>
+        function loadimg(load){
+            const view =document.getElementById("view");
+            const viewimg = document.getElementById("viewer_img");
+            const img = document.getElementById(load)
+            viewimg.src = img.src
+
+            view.display = flex
+            
+
+
+        }
+
+
+        function colorGet(img){
+
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            img = document.getElementById(img);
+
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+
+            img.crossOrigin = "Anonymous";
+
+            ctx.drawImage(img, 0, 0);
+            const imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            red_total = 0
+            green_total = 0
+            blue_total = 0
+            pixel_count = 0
+            for (let i = 0; i< data.length; i+=4){
+                red_total += data[i];
+                    if (data[i] != 0) {
+                    console.log("Not zero");
+                }
+                green_total += data[i+1]
+                blue_total += data[i+2]
+                pixel_count += 1
+            }
+            
+                red_total/=pixel_count
+                green_total/=pixel_count
+                blue_total/=pixel_count
+
+                const red = red_total.toString();
+                const green = green_total.toString();
+                const blue = blue_total.toString();
+                const stringhex = red + green + blue 
+                img.setAttribute("stringhex",stringhex);
+            
+        }
+
+    </script>
 
 </head>
 
@@ -35,6 +118,10 @@
         <option value= nameSort("all_art")> name </option>
     
     </select>
+
+    <div id = "view">
+        <img id ="viewer_img" src="" alt="">
+    </div>
 
 
 <!-- buttons allowing to switch between tabs-->
@@ -58,13 +145,13 @@
 <!--tabs-->
     <div id = "all_art" class = "tab">
         <div class="image-wrapper" data-name="Hair">
-            <img src ="prettyyyyhair.png" title="Iridescent Hair (added 4/16/2025)" width = "500" id = "Iridescent Hair" onload = "colorGet('Iridescent Hair')">
+            <img src ="prettyyyyhair.png" title="Iridescent Hair (added 4/16/2025)" width = "750" id = "Iridescent Hair" onload = "colorGet('Iridescent Hair')" onclick = "loadimg('Iridescent Hair')">
         </div>
         <div class="image-wrapper" data-name="Bird">
-            <img src ="guhguh.png" title = "Bird (added 4/16/2025)" width = "500" id = "Bird" onload = "colorGet('Bird')">
+            <img src ="guhguh.png" title = "Bird (added 4/16/2025)" width = "750" id = "Bird" onload = "colorGet('Bird')">
         </div>
-        <div class="image-wrapper" data-name="Doodles">
-            <img src ="jig.png" title = "Stickman Doodles (added 4/16/2025)" width = "500" id = "Stickman Doodles" onload = "colorGet('Stickman Doodles')">
+        <div class="image-wrapper" data-name="Stickman Doodles">
+            <img src ="jig.png" title = "Stickman Doodles (added 4/16/2025)" width = "750" id = "Stickman Doodles" onload = "colorGet('Stickman Doodles')">
         </div>
     </div>
 
@@ -118,44 +205,7 @@
 
         }
 
-        function colorGet(img){
-
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-
-                img = document.getElementById(img);
-
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-
-                img.crossOrigin = "Anonymous";
-
-                ctx.drawImage(img, 0, 0);
-                const imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
-                const data = imageData.data;
-
-                red_total = 0
-                green_total = 0
-                blue_total = 0
-                pixel_count = 0
-                for (let i = 0; i< data.length; i+=4){
-                    red_total += data[i];
-                    green_total += data[i+1]
-                    blue_total += data[i+2]
-                    pixel_count += 1
-                }
-                
-                    red_total/=pixel_count
-                    green_total/=pixel_count
-                    blue_total/=pixel_count
-
-                    const red = red_total.toString();
-                    const green = green_total.toString();
-                    const blue = blue_total.toString();
-                    const stringhex = red + green + blue 
-                    img.setAttribute("stringhex",stringhex);
-                
-            }
+      
         
     </script>
 
