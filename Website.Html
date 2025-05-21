@@ -28,7 +28,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vw;
+            height: 100vh;
             background-color: rgba(0,0,0,0.5);
             justify-content:center;
             align-items:center;
@@ -36,8 +36,8 @@
 
         }
         #view img{
-            max-height: fit-content;
-            max-width: fit-content;
+            max-height: 75vh;
+            max-width: 75vw;
 
 
 
@@ -46,17 +46,23 @@
     </style>
     <script>
         function loadimg(load){
-            const view =document.getElementById("view");
+            const view = document.getElementById("view");
             const viewimg = document.getElementById("viewer_img");
             const img = document.getElementById(load)
             viewimg.src = img.src
 
-            view.display = flex
+            view.style.display = "flex"
             
 
 
         }
+        
+        function closeimg(){
+            const view = document.getElementById("view");
+            view.style.display = "none"
+        }
 
+        
 /*
         function colorGet(img){
 
@@ -116,24 +122,26 @@
     <select onchange= "eval(this.value)">
     
         <option value= colorSorter("all_art")> nothing yet </option>
-        <option value= nameSort("all_art")> name </option>
-    
+        <option value= nameSort("all_art")> name sort all </option>
+        <option value= nameSort("digital_art")> name sort digital </option>
+        <option value= nameSort("traditional_art")> name sort traditional </option>
+
     </select>
 
     <div id = "view">
-        <img id ="viewer_img" src="" alt="">
+        <img id ="viewer_img" src="" alt="" onclick="closeimg()">
     </div>
 
 
 <!-- buttons allowing to switch between tabs-->
     <button onclick = "openTab('all_art')">
-        Hello!
+        All Art
     </button>
-    <button onclick = "openTab('digital art')">
-        Hii!
+    <button onclick = "openTab('digital_art')">
+        Digital Art
     </button>
-    <button onclick = "openTab('traditional art')">
-        Hii!
+    <button onclick = "openTab('traditional_art')">
+        Traditional Art
     </button>
 
 <!--introduction to website/headings-->
@@ -164,14 +172,14 @@
             <img src ="alienthingidk.jpeg" title="Alien (added 5/21/2025)" width = "750" id = "Alien" onload = "colorGet('Alien')" onclick = "loadimg('Alien')">
         </div>
         <div class="image-wrapper" data-name="Bird">
-            <img src ="guhguh.jpeg" title = "Bird (added 4/16/2025)" width = "750" id = "Bird" onload = "colorGet('Bird')">
+            <img src ="guhguh.jpeg" title = "Bird (added 4/16/2025)" width = "750" id = "Bird" onload = "colorGet('Bird')" onclick = "loadimg('Bird')"> 
         </div>
         <div class="image-wrapper" data-name="Stickman Doodles">
-            <img src ="jig.jpeg" title = "Stickman Doodles (added 4/16/2025)" width = "750" id = "Stickman Doodles" onload = "colorGet('Stickman Doodles')">
+            <img src ="jig.jpeg" title = "Stickman Doodles (added 4/16/2025)" width = "750" id = "Stickman Doodles" onload = "colorGet('Stickman Doodles')" onclick = "loadimg('Stickman Doodles')">
         </div>
     </div>
 
-    <div id = "digital art" class = "tab">
+    <div id = "digital_art" class = "tab">
         <div class="image-wrapper" data-name="Hair">
             <img src ="prettyyyyhair.jpeg" title="Iridescent Hair (added 4/16/2025)" width = "750" id = "Iridescent Hair" onload = "colorGet('Iridescent Hair')" onclick = "loadimg('Iridescent Hair')">
         </div>
@@ -198,7 +206,7 @@
         </div>
     </div>
 
-    <div id = "traditional art" class = "tab">
+    <div id = "traditional_art" class = "tab">
 
         nothing yet
     </div>
