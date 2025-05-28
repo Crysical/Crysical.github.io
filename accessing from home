@@ -1,0 +1,2 @@
+1. type in python -m http.server into the console
+2. type http://localhost:8000/Website.html into google chrome
